@@ -1,0 +1,43 @@
+// MemberController.java
+@Controller
+public class MemberController {
+
+    private final MemberService memberService;
+
+    @Autowired
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
+}
+
+// MemberService.java
+@Service
+public class MemberService {
+
+    private final MemberRepository memberRepository;
+
+    @Autowired
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+}
+
+// MemoryMemberRepository.java
+@Repository
+public class MemoryMemberRepository implements MemberRepository {
+}
+
+// SpringConfig.java
+@Configuration
+public class SpringConfig {
+
+    @Bean
+    public MemberService memberService() {
+        return new MemberService(memberRepository());
+    }
+
+    @Bean
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+}
