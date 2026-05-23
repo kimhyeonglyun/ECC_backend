@@ -1,0 +1,82 @@
+### 뷰 템플릿 페이지 만들기
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0,
+        maximum-scale=1.0, minimum-scale-=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>홍팍님, 반갑습니다!<h1>
+</body>
+</html>
+
+
+### 컨트롤러 만들고 실행하기
+
+package com.example.firstproject.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class FirstController {
+
+    public String niceToMeetYou() {
+        return "";
+    }
+}
+
+
+
+public String niceToMeetYou() {
+    return "greetings";
+}
+
+
+
+import org.springframework.stereotype.Controller;
+
+import org.springframework.web.blind.annotation.GetMapping;
+
+@Controller
+public calss FirstController {
+
+    @GetMapping("/hi")
+    public String niceToMeetYou() { 
+        return "greetings";
+    }
+}
+
+
+
+### 모델 추가하기
+
+<body>
+    <h1>{{username}}님, 반갑습니다!</h1>
+</body>
+</html>
+
+
+
+import org.springframework.ui.Model;
+
+    @GetMapping("/hi")
+    public String niceToMeetYou(Model model) {
+        return "greetings";
+    }
+
+
+
+puvlic String niceToMeetYou(Model model) {
+
+    model.addAttribute("Username","홍팍");
+    return "greetigns";
+}
+
+
+
+model.addAttribute("username","hongpark");
+    
